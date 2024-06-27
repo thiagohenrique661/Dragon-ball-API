@@ -1,8 +1,44 @@
 {
-    "rewrites": [
+    "version": 2,
+    "public": true,
+    "builds": [
         {
-            "source": "/(.*)",
-            "destination": "/"
+            "src": "html/**/*.html",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "css/**/*.css",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "js/**/*.js",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "image/**/*",
+            "use": "@vercel/static"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/html/(.*)",
+            "dest": "/html/$1"
+        },
+        {
+            "src": "/css/(.*)",
+            "dest": "/css/$1"
+        },
+        {
+            "src": "/js/(.*)",
+            "dest": "/pastajs/$1"
+        },
+        {
+            "src": "/image/(.*)",
+            "dest": "/image/$1"
+        },
+        {
+            "src": "/",
+            "dest": "/html/index.html"
         }
     ]
 }
