@@ -56,9 +56,11 @@ function displayplanets(planets) {
         allBox.appendChild(card);
     }
 }
-document.addEventListener('DOMContentLoaded', () => {
+
+// Exibe todos os planetas ao carregar a página
+setTimeout(() => {
     displayplanets(listPlanets);
-});
+}, 1000);
 
 function filterPlanets() {
     const searchValue = nameInput.value.toLowerCase();
