@@ -3,6 +3,7 @@
     "public": true,
     "builds": [
         {
+<<<<<<< HEAD
             "src": "html/**/*.html",
             "use": "@vercel/static"
         },
@@ -39,6 +40,9 @@
         {
             "src": "/",
             "dest": "/html/index.html"
+=======
+            "source": "/(.*)","destination": "/"
+>>>>>>> 841ab43fdbe923f0df820a1b075c2bd1bacbd86f
         }
     ]
 }
