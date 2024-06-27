@@ -3,7 +3,6 @@ import { listCharacters } from "./person.js";
 const characterContainer = document.getElementById("characterContainer");
 
 // Seleciona o input e o botão de filtro já existente
-
 const nameInput = document.querySelector("#search-box .search-text");
 const raceSelect = document.querySelector("#box-race #select-race");
 const genderSelect = document.querySelector("#box-gender #select-gender"); // Adicione esta linha se você tiver um select para gênero
@@ -13,7 +12,7 @@ function displayCharacters(characters) {
     characterContainer.innerHTML = ''; // Limpa o container antes de adicionar novos cards
 
     if (characters.length === 0) {
-        // Exibe a mensagem de fundo se não houver planetas
+        // Exibe a mensagem de fundo se não houver personagens
         const noPersonMessage = document.createElement("div");
         noPersonMessage.classList.add("no-person-message");
         noPersonMessage.textContent = "Personagem não encontrado.";
@@ -83,13 +82,12 @@ function filterCharacters() {
 
     displayCharacters(filteredCharacters);
 }
-
 // Adiciona os eventos de entrada e mudança nos campos de filtro
 nameInput.addEventListener("input", filterCharacters);
 raceSelect.addEventListener("change", filterCharacters);
 if (genderSelect) genderSelect.addEventListener("change", filterCharacters);
 
 // Exibe todos os personagens ao carregar a página
-setTimeout(() => {
+document.addEventListener('DOMContentLoaded', () => {
     displayCharacters(listCharacters);
-}, 1000);
+});
