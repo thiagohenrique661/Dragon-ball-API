@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../css/style.css">
+    <script src="https://kit.fontawesome.com/74e3d67115.js" crossorigin="anonymous"></script>
+    <script src="/js/configPlanet.js" type="module"></script>
+    <title>Personagens</title>
+</head>
+
+<body>
+    <header>
+        <div id="container-header">
+            <div id="header-inner">
+                <a href="index.html" id="header-logo">
+                    <img src="../image/logo.png" alt="Logo">
+                </a>
+
+                <nav id="navigation">
+                    <div id="nav-options">
+                        <ul class="header-menu">
+                            <li class="nav-item">
+                                <a href="index.html">HOME</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../html/characters.html">Personagens</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../html/planets.html">Planetas</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="mobile-bars">
+                        <button id="menu-toggle" onclick="toggleMenu()">
+                            <i class="fa-solid fa-bars"></i>
+                        </button>
+                    </div>
+                </nav>
+            </div>
+
+            <div class="btns-contact">
+                <a href="https://br.linkedin.com/in/thiago-henrique-71353719b" target="_blank"
+                    class="btn-contact">CONTATO</a>
+            </div>
+
+            <div class="mobile-menu">
+                <ul>
+                    <li class="nav-item">
+                        <a href="index.html">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../html/characters.html">Personagens</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../html/planets.html">Planetas</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="https://br.linkedin.com/in/thiago-henrique-71353719b" target="_blank">CONTATO</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div id="filter-container">
+        <div id="search-box">
+            <input type="text" class="search-text" placeholder="Pesquisar...">
+
+        </div>
+    </div>
+
+    <div id="planetsContainer">
+    </div>
+
+
+    </div>
+    </div>
+    <script>
+        function toggleMenu() {
+            document.querySelector('.mobile-menu').classList.toggle('active');
+        }
+        window.addEventListener('resize', function () {
+            if (window.innerWidth > 768) { // ajuste para o breakpoint de sua escolha
+                document.querySelector('.mobile-menu').classList.remove('active');
+            }
+        });
+    </script>
+</body>
+
+</html>
