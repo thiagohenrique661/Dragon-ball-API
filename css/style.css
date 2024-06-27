@@ -108,13 +108,27 @@ header {
 }
 
 #home-img {
-    width: 100%;
-    height: 100vh;
+    position: absolute;
+    top: 47%;
+
+}
+
+#home-mobile {
+    display: none;
+
+}
+
+#home-tablet {
+    display: none;
 }
 
 #home-body {
     overflow: hidden;
     background: #670908;
+}
+
+#home-ipad {
+    display: none;
 }
 
 .btns-contact {
@@ -645,6 +659,7 @@ select:focus {
     .multi-box-planet {
         grid-template-columns: repeat(3, 1fr);
     }
+
 }
 
 @media screen and (min-width: 710px) and (max-width: 960px) {
@@ -655,6 +670,7 @@ select:focus {
     .multi-box-planet {
         grid-template-columns: repeat(2, 1fr);
     }
+
 }
 
 @media screen and (max-width: 700px) {
@@ -665,4 +681,17 @@ select:focus {
     .multi-box-planet {
         grid-template-columns: repeat(1, 1fr);
     }
+
+}
+
+
+@media screen and (max-width: 500px) {
+    .multi-box {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .multi-box-planet {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
 }
