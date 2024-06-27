@@ -365,6 +365,7 @@ header {
 
 #box-race {
     transform: translate(10%, 0%);
+    min-width: 20px;
     cursor: pointer;
     background: #fff;
     height: 10px;
@@ -386,6 +387,7 @@ select:focus {
 
 #box-gender {
     transform: translate(25%, 0%);
+    min-width: 20px;
     cursor: pointer;
     background: #fff;
     height: 10px;
