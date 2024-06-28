@@ -1,7 +1,7 @@
 const personDB = "https://dragonball-api.com/api/characters";
-export let listCharacters = [];
 
- export default async function fetchAllData() { 
+// Função principal para buscar todos os dados
+export default async function fetchAllData() {
     let allItems = [];
     let currentPage = 1;
     const totalPages = 6;
@@ -10,13 +10,12 @@ export let listCharacters = [];
         try {
             const response = await fetch(`${personDB}?page=${currentPage}`);
             if (!response.ok) {
-                throw new Error("Error fetching");   
+                throw new Error("Error fetching");
             }
             const data = await response.json();
             const items = data.items;
             allItems = [...allItems, ...items];
             currentPage++;
-        
         } catch (error) {
             console.log("ERRO: " + error);
             break;
@@ -30,20 +29,7 @@ export let listCharacters = [];
     return allItems;
 }
 
- fetchAllData().then((allItems) => {
-    for (let i = 0; i < allItems.length; i++) { 
-        listCharacters.push({
-            nome: allItems[i].name,
-            raça: allItems[i].race,
-            gênero: allItems[i].gender,
-            image: allItems[i].image
-        });
-    }
-})
-.catch((error) => { 
-    console.log("Error in getting all items: ", error);
-});
-
+// Funções de correção
 function correctNames(personList) {
     return personList.map(person => {
         let correctedName = person.name;
@@ -72,19 +58,18 @@ function correctNames(personList) {
                 break;
             case /master roshi/i.test(correctedName):
                 correctedName = "Mestre Kame";
-                
                 break;
             case /krillin/i.test(correctedName):
                 correctedName = "Kuririn";
                 break;
             case /dyspo/i.test(correctedName):
                 person.race = "Desconhecido";
-                break;    
+                break;
         }
-        
+
         if (correctedName === "Priest") {
             correctedName = "Daishinkan";
-        } 
+        }
 
         correctedName = correctedName.replace(/\(.*\)/g, '').trim();
 
@@ -95,7 +80,7 @@ function correctNames(personList) {
     });
 }
 
-function correctRaces(personList) { 
+function correctRaces(personList) {
     return personList.map(person => {
         let raceName = person.race;
 
@@ -155,3 +140,16 @@ function correctGender(personList) {
         };
     });
 }
+export const listCharacters = fetchAllData().then((allItems) => {
+    const characters = allItems.map(item => ({
+        nome: item.name,
+        raça: item.race,
+        gênero: item.gender,
+        image: item.image
+    }));
+
+    return characters;
+}).catch((error) => {
+    console.error("Error in fetching all characters:", error);
+    return []; 
+});

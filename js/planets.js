@@ -1,5 +1,4 @@
 const planetDB = "https://dragonball-api.com/api/planets";
-export let listPlanets = [];
 
 export default async function fetchAllPlanets() {
     let allPlanets = [];
@@ -28,20 +27,6 @@ export default async function fetchAllPlanets() {
 
     return allPlanets;
 }
-
-fetchAllPlanets().then((allPlanets) => {
-    for (let i = 0; i < allPlanets.length; i++) {
-        listPlanets.push({
-            nome: allPlanets[i].name,
-            situacao: allPlanets[i].isDestroyed,
-            descricao: allPlanets[i].description,
-            image: allPlanets[i].image
-        });
-    }
-}).catch((error) => {
-    console.log("Error in getting all items: " + error);
-});
-
 function correctNames(planetList) {
     return planetList.map((planet) => {
         let correctNames = planet.name;
@@ -171,3 +156,17 @@ function correctDescription(planetList) {
         }
     });
 }
+export const listPlanets = fetchAllPlanets().then((allItems) => {
+    const planets = allItems.map( item => ({ 
+            nome: item.name,
+            situacao: item.isDestroyed,
+            descricao: item.description,
+            image: item.image
+
+        }));
+
+        return planets;
+}).catch((error) => {
+    console.log("Error in getting all items: " + error);
+    return [];
+});

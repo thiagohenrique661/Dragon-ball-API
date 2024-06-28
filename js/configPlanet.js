@@ -56,18 +56,23 @@ function displayplanets(planets) {
         allBox.appendChild(card);
     }
 }
-
-// Exibe todos os planetas ao carregar a página
-setTimeout(() => {
-    displayplanets(listPlanets);
-}, 1000);
-
 function filterPlanets() {
     const searchValue = nameInput.value.toLowerCase();
     
-    const filteredPlanets = listPlanets.filter(planet => {
-        return planet.nome.toLowerCase().includes(searchValue);
+    listPlanets.then(planets => {
+        const filteredPlanets = planets.filter(planet => 
+            planet.nome.toLowerCase().includes(searchValue)
+        );
+        
+        displayplanets(filteredPlanets);
+    }).catch(error => {
+        console.log("Erro ao filtrar planetas:", error)
     });
-    displayplanets(filteredPlanets);
 }
 nameInput.addEventListener("input", filterPlanets);
+
+listPlanets.then((planets) => {
+    displayplanets(planets);
+}).catch((err) => {
+    console.log("Erro ao inicializar a página", err);
+});
