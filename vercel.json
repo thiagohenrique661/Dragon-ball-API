@@ -39,6 +39,10 @@
         {
             "src": "/",
             "dest": "/html/index.html"
+        },
+        {
+            "src": "/index.html",
+            "dest": "/html/index.html"
         }
     ]
 }
