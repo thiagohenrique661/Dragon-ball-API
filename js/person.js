@@ -1,12 +1,12 @@
 const personDB = "https://dragonball-api.com/api/characters";
 
 // Função principal para buscar todos os dados
-export default async function fetchAllData() {
+export default async function fetchAllData() { // função assincrona que retorna todos os dados da API
     let allItems = [];
     let currentPage = 1;
     const totalPages = 6;
 
-    while (currentPage <= totalPages) {
+    while (currentPage <= totalPages) { // enquanto página atual for menor que o total de páginas existentes realiza o fetch
         try {
             const response = await fetch(`${personDB}?page=${currentPage}`);
             if (!response.ok) {
@@ -29,7 +29,7 @@ export default async function fetchAllData() {
     return allItems;
 }
 
-// Funções de correção
+// Funções de correção dos nomes do personagens
 function correctNames(personList) {
     return personList.map(person => {
         let correctedName = person.name;
@@ -80,6 +80,7 @@ function correctNames(personList) {
     });
 }
 
+// função para correção das raças dos personagens da lista
 function correctRaces(personList) {
     return personList.map(person => {
         let raceName = person.race;
@@ -121,6 +122,7 @@ function correctRaces(personList) {
     });
 }
 
+// função para correção dos gêneros dos personagens
 function correctGender(personList) {
     return personList.map(person => {
         let genderName = person.gender;
@@ -140,6 +142,8 @@ function correctGender(personList) {
         };
     });
 }
+
+// retona uma promise com a lista dos personagens
 export const listCharacters = fetchAllData().then((allItems) => {
     const characters = allItems.map(item => ({
         nome: item.name,

@@ -33,7 +33,7 @@ function displayplanets(planets) {
         imageBox.appendChild(planetImage);
 
         const popUp = document.createElement("div");
-        popUp.classList.add("pop-up");
+        popUp.classList.add("pop-up"); // Adiciona o pop-up ao pop-up de história do planeta
         popUp.textContent = planet.descricao;
         card.appendChild(popUp);
 
@@ -56,6 +56,8 @@ function displayplanets(planets) {
         allBox.appendChild(card);
     }
 }
+
+// Função para filtrar planetas por nome
 function filterPlanets() {
     const searchValue = nameInput.value.toLowerCase();
     
@@ -71,7 +73,7 @@ function filterPlanets() {
 }
 nameInput.addEventListener("input", filterPlanets);
 
-listPlanets.then((planets) => {
+listPlanets.then((planets) => {   // Promise que retorna a lista dos planetas existentes e apresenta os cards usando a funcção displayPlanets
     displayplanets(planets);
 }).catch((err) => {
     console.log("Erro ao inicializar a página", err);

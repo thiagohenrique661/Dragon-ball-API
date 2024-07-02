@@ -1,11 +1,11 @@
 const planetDB = "https://dragonball-api.com/api/planets";
 
-export default async function fetchAllPlanets() {
+export default async function fetchAllPlanets() { // função que busca todos os planetas existentes
     let allPlanets = [];
     let currentPage = 1;
     const totalPage = 6;
 
-    while (currentPage <= totalPage) {
+    while (currentPage <= totalPage) { // enquanto página atual for menor que o total de páginas realize o fetch 
         try {
             const response = await fetch(`${planetDB}?page=${currentPage}`);
             if (!response.ok) {
@@ -27,7 +27,7 @@ export default async function fetchAllPlanets() {
 
     return allPlanets;
 }
-function correctNames(planetList) {
+function correctNames(planetList) { // função para correção dos nomes dos planetas
     return planetList.map((planet) => {
         let correctNames = planet.name;
 
@@ -70,7 +70,7 @@ function correctNames(planetList) {
     });
 }
 
-function correctState(planetList) {
+function correctState(planetList) { // retorna o estado do planeta
     return planetList.map((planet) => {
         let state = planet.isDestroyed ? "Destruído" : "Preservado";
         return {
@@ -80,7 +80,7 @@ function correctState(planetList) {
     });
 }
 
-function correctDescription(planetList) {
+function correctDescription(planetList) { // retorna a história do planeta
     return planetList.map((planet) => {
         let correctDescription = planet.description;
         let correctNames = planet.name;
@@ -156,7 +156,7 @@ function correctDescription(planetList) {
         }
     });
 }
-export const listPlanets = fetchAllPlanets().then((allItems) => {
+export const listPlanets = fetchAllPlanets().then((allItems) => { // retorna a promise da lista dos planetas, corrigindo os campos para português
     const planets = allItems.map( item => ({ 
             nome: item.name,
             situacao: item.isDestroyed,
